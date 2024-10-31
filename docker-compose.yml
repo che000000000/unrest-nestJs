@@ -1,0 +1,24 @@
+version: '3.9'
+
+services:
+  db: 
+    container_name: unrest-database
+    image: postgres:16.4-alpine
+    command: postgres
+    restart: always
+    ports:
+      - "5438:5432"
+    environment: 
+      POSTGRES_HOST: localhost
+      POSTGRES_USER: cim
+      POSTGRES_DB: unrest-db
+      POSTGRES_PASSWORD: root
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: dich140804@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - 5050:80
